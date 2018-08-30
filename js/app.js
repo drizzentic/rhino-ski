@@ -5,6 +5,7 @@ $(document).ready(function() {
     var ctx=canvas.createCanvas();
     var obstacleTypes;
     var gameWidth = window.innerWidth;
+
     var gameHeight = window.innerHeight;
     var skierSpeed=Utils.getParams('skierSpeed');
     var skierMapY=Utils.getParams('skierMapY');
@@ -330,6 +331,9 @@ $(document).ready(function() {
         Utils.storeParams("skierMapY",0);
         Utils.storeParams("skierDirection",5);
         Utils.storeParams("skierSpeed",8);
+
+        //Initialize default direction
+        skierDirection=Utils.getParams('skierDirection');
         Utils.loadAssets.then(function() {
 
             loadedAssets=Utils.loadedAssets;
@@ -338,5 +342,5 @@ $(document).ready(function() {
         });
     };
 
-    initGame(gameLoop);
+    initGame();
 });

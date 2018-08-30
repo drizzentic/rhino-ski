@@ -50,10 +50,12 @@ Changelog:
 * Added localstorage to keep track of the changing variables instead of using global variables.
 * Added an obstacle.
 * Added the current and highscores for the player.
+* Link https://pure-hollows-6061.herokuapp.com/
 
 TODO:
 * Write unit tests.
 * Create more granular modules.
+* Improve the score generation logic.
 
 
 And don't think you have to stop there. If you're having fun with this and have the time, feel free to add anything else
