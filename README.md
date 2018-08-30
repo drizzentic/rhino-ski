@@ -51,6 +51,7 @@ Changelog:
 * Added an obstacle.
 * Added the current and highscores for the player.
 * Link https://pure-hollows-6061.herokuapp.com/
+* Added logic to speed up the skier as he misses more obstacles.
 
 TODO:
 * Write unit tests.
