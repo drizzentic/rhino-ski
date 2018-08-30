@@ -7,10 +7,10 @@ $(document).ready(function() {
     var gameWidth = window.innerWidth;
 
     var gameHeight = window.innerHeight;
-    var skierSpeed=Utils.getParams('skierSpeed');
-    var skierMapY=Utils.getParams('skierMapY');
-    var skierMapX=Utils.getParams('skierMapX');
-    var skierDirection=Utils.getParams('skierDirection');
+    var skierSpeed=0;
+    var skierMapY=0;
+    var skierMapX=0;
+    var skierDirection=0;
 
     var loadedAssets = {};
 
@@ -223,18 +223,17 @@ $(document).ready(function() {
             skierDirection = 0;
             Utils.storeParams("skierDirection",0);
             Utils.storeParams("highscore",recentScore);
-            Utils.storeParams("highscore",recentScore);
             Utils.storeParams("current",0);
             gameState=false;
             Canvas.updateScore();
         }else{
-
             Utils.storeParams("current",recentScore);
             if(gameState){
                 recentScore++;
             }
             Canvas.updateScore();
         }
+
     };
 
     var intersectRect = function(r1, r2) {
@@ -269,7 +268,8 @@ $(document).ready(function() {
     var setupKeyhandler = function() {
         $(window).keydown(function(event) {
             //Change game state
-
+            //Increase speed for button pressed
+            Utils.storeParams("skierSpeed",skierSpeed+=0.1);
             switch(event.which) {
                 case 32: //space
                     skierDirection = 0;
@@ -333,9 +333,11 @@ $(document).ready(function() {
         Utils.storeParams("skierSpeed",8);
 
         //Initialize default direction
-        skierDirection=Utils.getParams('skierDirection');
         Utils.loadAssets.then(function() {
-
+             skierSpeed=Utils.getParams('skierSpeed');
+             skierMapY=Utils.getParams('skierMapY');
+             skierMapX=Utils.getParams('skierMapX');
+             skierDirection=Utils.getParams('skierDirection');
             loadedAssets=Utils.loadedAssets;
             placeInitialObstacles();
             requestAnimationFrame(gameLoop);
